@@ -22,8 +22,6 @@ public class TicTacToe {
         } else {
             humanFirstMove = false;
         }
-//        System.out.println(randomNum);
-
         gamePlay();
 
     }
@@ -42,11 +40,15 @@ public class TicTacToe {
                 placePiece("human", humanInput);
                 boolean humanIsWinner = checkWinner("human");
                 humanFirstMove = false;
-                System.out.println(humanFirstMove);
                 if(humanIsWinner) {
                     quit = false;
                     System.out.println("You have won this round, Try again ? (Y / N)");
-
+                    scanner.nextLine();
+                    String choiceToRepeat = scanner.nextLine();
+                    char tryAgain = Character.toUpperCase(choiceToRepeat.charAt(0));
+                    if(tryAgain == 'Y') {
+                        new TicTacToe();
+                    }
                 }
             } else {
                 System.out.println("computer turn");
@@ -59,6 +61,12 @@ public class TicTacToe {
                 if(computerIsWinner) {
                     quit = false;
                     System.out.println("Oops! Computer won this round, try again?");
+                    System.out.println("You have won this round, Try again ? (Y / N)");
+                    scanner.nextLine();
+                    char tryAgain = Character.toUpperCase(scanner.nextLine().charAt(0));
+                    if(tryAgain == 'Y') {
+                        new TicTacToe();
+                    }
                 }
 
                 humanFirstMove = true;
